@@ -42,7 +42,8 @@ class ChannelTestCase(TestCase):
     """Test the channels."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -113,7 +114,8 @@ class ThemeTestCase(TestCase):
     """Test the theme."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -176,8 +178,10 @@ class ThemeTestCase(TestCase):
 
 class TypeTestCase(TestCase):
     """Test the video type."""
-
-    # fixtures = ['initial_data.json', ]
+    fixtures = [
+        "initial_data_main.json",
+        # "initial_data_video.json",
+    ]
 
     def setUp(self):
         """Create types to be tested."""
@@ -220,7 +224,8 @@ class DisciplineTestCase(TestCase):
     """Test the discipline."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -266,7 +271,8 @@ class VideoTestCase(TestCase):
     """Test the Video and ViewCount."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -386,8 +392,10 @@ class VideoTestCase(TestCase):
 
 class VideoRenditionTestCase(TestCase):
     """Test the Video Rendition."""
-
-    # fixtures = ['initial_data.json', ]
+    fixtures = [
+        "initial_data_main.json",
+        # "initial_data_video.json",
+    ]
 
     def create_video_rendition(
         self,
@@ -482,8 +490,10 @@ class VideoRenditionTestCase(TestCase):
 
 class EncodingVideoTestCase(TestCase):
     """Test the Video Encoding model."""
-
-    # fixtures = ['initial_data.json', ]
+    fixtures = [
+        "initial_data_main.json",
+        # "initial_data_video.json",
+    ]
 
     def setUp(self):
         user = User.objects.create(username="pod", password="pod1234pod")
@@ -565,8 +575,10 @@ class EncodingVideoTestCase(TestCase):
 
 class EncodingAudioTestCase(TestCase):
     """Test the Audio Encoding model."""
-
-    # fixtures = ['initial_data.json', ]
+    fixtures = [
+        "initial_data_main.json",
+        "initial_data_video.json",
+    ]
 
     def setUp(self):
         user = User.objects.create(username="pod", password="pod1234pod")
@@ -632,9 +644,9 @@ class EncodingAudioTestCase(TestCase):
 
 class PlaylistVideoTestCase(TestCase):
     """Test the PlaylistVideo model."""
-
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -700,9 +712,9 @@ class PlaylistVideoTestCase(TestCase):
 
 class EncodingLogTestCase(TestCase):
     """Test the EncodingLog model."""
-
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -741,9 +753,9 @@ class EncodingLogTestCase(TestCase):
 
 class EncodingStepTestCase(TestCase):
     """Test the EncodingStep model."""
-
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -788,7 +800,8 @@ class EncodingStepTestCase(TestCase):
 
 class NotesTestCase(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):

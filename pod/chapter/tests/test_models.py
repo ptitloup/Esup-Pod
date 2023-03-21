@@ -11,7 +11,8 @@ class ChapterModelTestCase(TestCase):
     """Test case for Pod chapter model."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):

@@ -11,7 +11,8 @@ class FeedTestView(TestCase):
     """Test case for Pod video feeds view."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):

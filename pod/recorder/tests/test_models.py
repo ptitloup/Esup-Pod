@@ -11,7 +11,8 @@ class RecorderTestCase(TestCase):
     """Test case for Pod Recorder."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -62,7 +63,8 @@ class RecorderTestCase(TestCase):
 
 class RecordingTestCase(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -151,7 +153,8 @@ class RecordingTestCase(TestCase):
 
 class RecordingFileTreatmentTestCase(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -205,7 +208,8 @@ class RecordingFileTreatmentTestCase(TestCase):
 
 class RecordingFileTestCase(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):

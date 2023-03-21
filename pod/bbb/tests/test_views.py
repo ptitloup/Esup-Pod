@@ -12,7 +12,8 @@ class MeetingViewsTestCase(TestCase):
     """Test case for BBB MeetingViews."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -71,9 +72,9 @@ class MeetingViewsTestCase(TestCase):
 
 
 class LivestreamViewsTestCase(TestCase):
-    fixtures = [
-        "initial_data.json",
-    ]
+    # fixtures = [
+    #     "initial_data.json",
+    # ]
 
     def setUp(self):
         meeting1 = Meeting.objects.create(

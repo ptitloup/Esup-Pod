@@ -25,7 +25,8 @@ class ChannelTestView(TestCase):
     """Test case for Channel views."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -164,7 +165,8 @@ class ChannelTestView(TestCase):
 
 class MyChannelsTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -203,7 +205,8 @@ class MyChannelsTestView(TestCase):
 
 class ChannelEditTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -260,7 +263,8 @@ class ChannelEditTestView(TestCase):
 
 class ThemeEditTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -381,7 +385,8 @@ class ThemeEditTestView(TestCase):
 
 class MyVideosTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -445,7 +450,8 @@ class MyVideosTestView(TestCase):
 
 class VideosTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -552,7 +558,8 @@ class VideosTestView(TestCase):
 
 class VideoTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -674,7 +681,8 @@ class VideoTestView(TestCase):
 
 class VideoEditTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -858,7 +866,8 @@ class VideoEditTestView(TestCase):
 
 class video_deleteTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -949,7 +958,8 @@ class video_deleteTestView(TestCase):
 
 class video_notesTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -1026,7 +1036,8 @@ class video_notesTestView(TestCase):
 
 class video_countTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -1065,7 +1076,8 @@ class video_countTestView(TestCase):
 
 class VideoTestUpdateOwner(TransactionTestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -1078,7 +1090,7 @@ class VideoTestUpdateOwner(TransactionTestCase):
             password="admin1234admin",
             is_superuser=True,
         )
-        self.simple_user = User.objects.create(
+        self.simple_user, create = User.objects.get_or_create(
             first_name="Pod", last_name="User", username="pod", password="pod1234pod"
         )
         self.v1 = Video.objects.create(
@@ -1158,7 +1170,8 @@ class VideoTestUpdateOwner(TransactionTestCase):
 
 class VideoTestFiltersViews(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -1294,7 +1307,8 @@ class VideoTestFiltersViews(TestCase):
 
 class VideoTestJSONView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):

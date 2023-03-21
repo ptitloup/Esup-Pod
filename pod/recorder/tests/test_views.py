@@ -27,7 +27,8 @@ class recorderViewsTestCase(TestCase):
     """Test case for Pod recorder views."""
 
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def setUp(self):
@@ -162,7 +163,8 @@ class recorderViewsTestCase(TestCase):
 
 class studio_podTestView(TestCase):
     fixtures = [
-        "initial_data.json",
+        "initial_data_main.json",
+        "initial_data_video.json",
     ]
 
     def create_index_file(self):
