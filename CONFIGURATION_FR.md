@@ -357,7 +357,7 @@ Voici les configurations des applications tierces utilisées par Esup-Pod.<br/>
 
  - `FFMPEG_STUDIO_COMMAND`
 
-  > valeur par défaut : `[' -hide_banner -threads %(nb_threads)s -i "%(input)s" %(subtime)s -c:a aac -ar 48000 -c:v h264 -profile:v high -pix_fmt yuv420p -crf %(crf)s -sc_threshold 0 -force_key_frames "expr:gte(t,n_forced*1)" -max_muxing_queue_size 4000 -deinterlace ']`
+  > valeur par défaut : ` -hide_banner -threads %(nb_threads)s %(input)s %(subtime)s -c:a aac -ar 48000 -c:v h264 -profile:v high -pix_fmt yuv420p -crf %(crf)s -sc_threshold 0 -force_key_frames "expr:gte(t,n_forced*1)" -max_muxing_queue_size 4000 -deinterlace `
 
 
 
@@ -1703,6 +1703,13 @@ Mettre `USE_MEETING` à True pour activer cette application.<br/>
   > valeur par défaut : `False`
 
   >> Seuls les utilisateurs "staff" pourront éditer les réunions <br>
+
+ - `DEFAULT_MEETING_THUMBNAIL`
+
+  > valeur par défaut : `/img/default-meeting.svg`
+
+  >> Image par défaut affichée comme poster ou vignette, utilisée pour présenter la réunion. <br>
+  >> Cette image doit se situer dans le répertoire `static`. <br>
 
  - `USE_MEETING`
 
