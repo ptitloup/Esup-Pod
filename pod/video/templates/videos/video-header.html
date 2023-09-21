@@ -2,8 +2,9 @@
 {% get_setting "USE_VIDEO_P2P" False as use_video_p2p %}
 
 {% if use_video_p2p %}
-<script src="{% static '@peertube/p2p-media-loader-core/build/p2p-media-loader-core.js' %}?ver={{VERSION}}" ></script>
-<script src="{% static '@peertube/p2p-media-loader-hlsjs/build/p2p-media-loader-hlsjs.js' %}?ver={{VERSION}}" ></script>
+  <script src="{% static '@peertube/p2p-media-loader-core/build/p2p-media-loader-core.js' %}?ver={{VERSION}}" ></script>
+  <script src="{% static '@peertube/p2p-media-loader-hlsjs/build/p2p-media-loader-hlsjs.js' %}?ver={{VERSION}}" ></script>
+  <script src="{% static 'js/hls-plugin.js' %}?ver={{ VERSION }}" type="module"></script>
 {% endif %}
 
 <link href="{% static 'video.js/dist/video-js.min.css' %}?ver={{VERSION}}" rel="stylesheet">
@@ -14,8 +15,6 @@
 <!--
 <script src="{% static 'js/videojs-hlsjs-plugin.min.js' %}?ver={{VERSION}}"></script>
 -->
-<script src="https://cdn.streamroot.io/videojs-hlsjs-plugin/1/stable/videojs-hlsjs-plugin.js"></script>
-
 
 <script src="{% static 'videojs-quality-selector-hls/dist/videojs-quality-selector-hls.min.js' %}"></script>
 <link href="{% static 'videojs-quality-selector-hls/dist/videojs-quality-selector-hls.css' %}?ver={{VERSION}}" rel="stylesheet">
