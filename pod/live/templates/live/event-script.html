@@ -4,12 +4,12 @@
 {% get_setting "USE_VIDEO_P2P" False as use_video_p2p %}
 {% get_setting "P2P_TRACKERS" "" as p2p_trackers %}
 {% get_setting "P2P_STUNS" "" as p2p_stuns %}
-{% if use_video_p2p %}
-<script src="{% static 'js/video-p2p-stats.js' %}?ver={{VERSION}}"></script>
+{% if use_video_p2p and event.is_current %}
+  <script src="{% static 'js/video-p2p-stats.js' %}?ver={{VERSION}}"></script>
 {% endif %}
 <script type="module">
   import '{% static 'video.js/dist/video.min.js' %}';
-  {% if use_video_p2p %}
+  {% if use_video_p2p and event.is_current %}
     import '{% static 'js/hls-plugin.js' %}';
   {% endif %}
   import '{% static 'videojs-quality-selector-hls/dist/videojs-quality-selector-hls.min.js' %}';
@@ -32,7 +32,7 @@
     let video_on_hold_is_displayed = false;
     let recordingDuration = 0;
 
-    {% if use_video_p2p %}
+    {% if use_video_p2p and event.is_current %}
       window.downloadTotals = { http: 0, p2p: 0 };
       window.uploadTotal = 0;
       window.nb_peers = 0;
@@ -43,7 +43,7 @@
         maxBufferLength: 10,
         liveSyncDurationCount: 10,
     }
-    {% if use_video_p2p %}
+    {% if use_video_p2p and event.is_current %}
       const p2p_config = {
         segments:{
           // number of segments to pass for processing to P2P algorithm
@@ -207,7 +207,7 @@
       // Management of the streaming live
       let player = videojs("podvideoplayer", options, function() {
       });
-      {% if use_video_p2p %}
+      {% if use_video_p2p and event.is_current %}
         if (p2pml.hlsjs.Engine.isSupported()) {
           p2pml.hlsjs.initVideoJsContribHlsJsPlayer(player);
           player.hlsjs({});
@@ -764,25 +764,9 @@
         }
 
         options["loop"] = true;
+        options["html5"] = {};
+        // options["plugins"] = {"core": {"p2p": false}}
         let playerOnHold = videojs('podvideoonholdplayer', options, function () { });
-
-        {% if use_video_p2p %}
-          console.log('p2pml.hlsjs.Engine.isSupported()', p2pml.hlsjs.Engine.isSupported());
-          if (p2pml.hlsjs.Engine.isSupported()) {
-            playerOnHold = videojs('podvideoonholdplayer', options, function () { });
-            window.engineHlsJs = new p2pml.hlsjs.Engine();
-            window.engineHlsJs.on(p2pml.core.Events.PeerConnect, onPeerConnect.bind(this));
-            window.engineHlsJs.on(p2pml.core.Events.PeerClose, onPeerClose.bind(this));
-            window.engineHlsJs.on(p2pml.core.Events.PieceBytesDownloaded, onBytesDownloaded.bind(this));
-            window.engineHlsJs.on(p2pml.core.Events.PieceBytesUploaded, onBytesUploaded.bind(this));
-            options['html5']['hlsjsConfig']['loader'] = window.engineHlsJs.createLoaderClass();
-            playerOnHold.hlsjs({});
-            playerOnHold.qualitySelectorHls({
-              displayCurrentQuality: true,
-            });
-            p2pml.hlsjs.initVideoJsContribHlsJsPlayer(playerOnHold);
-          }
-       {% endif %}
 
         if (withModal)
             playerOnHold.createModal('{% trans "Live not found, retry in 10 seconds" %}');
@@ -898,21 +882,17 @@
 
         {% if event.is_past or event.is_current %}
           {% if not request.GET.is_iframe %}
-            alert(`Event is past or current`); // TODO Withdrow this alert message
             getEventVideos();
           {% endif %}
         {% endif %}
 
         {% if event.is_coming %}
           {% if event.video_on_hold.is_video %}
-            alert(`Event is coming`); // TODO Withdrow this alert message
-            alert('{{ event.start_date }}');
             showWaitingVideo(false);
           {% endif %}
         {% endif %}
 
         {% if event.is_current %}
-          alert(`Event is current`); // TODO Withdrow this alert message
           showWaitingVideo(true);
         {% endif %}
 
